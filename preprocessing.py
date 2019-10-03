@@ -52,4 +52,4 @@ def feature_enhancement(data_set, enhanced_features, target_col):
     if 'skew' in enhanced_features:
         data_set['skew'] = features.skew(axis=1)
     if 'kurt' in enhanced_features:
-        data_set['kurt'] = features.kurtn(axis=1)
+        data_set['kurt'] = features.kurt(axis=1)
