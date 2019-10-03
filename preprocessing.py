@@ -7,14 +7,18 @@ def preprocess(data_set, reduce_size=-1, balance_targets=True, target_col='targe
     '''
         Preprocesses the data set contained in the DataFRame data_set.
     '''
+    print('\n\nPRE-PROCESSING')
 
     if reduce_size > 0:
+        print('Reducing data set size')
         reduce(data_set, reduce_size)
     
     if balance_targets:
+        print('Balancing distribution of target values')
         balance(data_set, target_col)
     
     if add_features:
+        print('Adding enhanced features')
         feature_enhancement(data_set, add_features, target_col)
 
 

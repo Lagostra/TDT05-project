@@ -38,6 +38,7 @@ params = {
     'predictor': ['gpu_predictor'],
 }
 
+print('\n\nTRAINING CLASSIFIER')
 model = xgb.XGBClassifier(**params)
 model.fit(X_train, y_train)
 
