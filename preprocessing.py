@@ -30,12 +30,12 @@ def reduce(data_set, reduce_size):
 def balance(data_set, target_col):
     sm = SMOTE(sampling_strategy='minority', random_state=42)
     oversampled_x, oversampled_y = sm.fit_sample(data_set.drop(target_col, axis=1), data_set[target_col])
-    oversampled = pd.concat([pd.DataFrame(oversampled_x), pd.DataFrame(oversampled_y)], axis=1)
+    oversampled = pd.concat([pd.DataFrame(oversampled_y), pd.DataFrame(oversampled_x)], axis=1)
     oversampled.columns = data_set.columns
     return oversampled
 
 def feature_enhancement(data_set, enhanced_features, target_col):
-    features = data_set.drop(target_col)
+    features = data_set.drop(target_col, axis=1)
     
     if 'sum' in enhanced_features:
         data_set['sum'] = features.sum(axis=1)
