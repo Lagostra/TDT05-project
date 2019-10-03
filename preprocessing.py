@@ -25,7 +25,7 @@ def reduce(data_set, reduce_size):
 
 def balance(data_set, target_col):
     sm = SMOTE(sampling_strategy='minority', random_state=42)
-    oversampled_x, oversampled_y = sm.fit_sample(train_data.drop(target_col, axis=1), train_data[target_col])
+    oversampled_x, oversampled_y = sm.fit_sample(data_set.drop(target_col, axis=1), data_set[target_col])
     oversampled = pd.concat([pd.DataFrame(oversampled_x), pd.DataFrame(oversampled_y)], axis=1)
     oversampled.columns = data_set.columns
     return oversampled

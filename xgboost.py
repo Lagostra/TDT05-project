@@ -14,13 +14,13 @@ ENHANCED_FEATURES = ['sum', 'mean', 'min', 'max', 'std', 'median', 'skew', 'kurt
 train_set, test_set = load_data()
 
 test_set_ids = test_set['ID_code']
-test_set = test_set.drop('ID_code')
-train_set = train_set.drop('ID_code')
+test_set = test_set.drop('ID_code', axis=1)
+train_set = train_set.drop('ID_code', axis=1)
 
 train_preprocessed = preprocess(train_set, balance_targets=BALANCE_TARGETS, add_features=ENHANCED_FEATURES)
 test_set = preprocess(test_set, balance_targets=False, add_features=ENHANCED_FEATURES)
 
-X, y = train_data.drop('target'), train_data['target']
+X, y = train_data.drop('target', axis=1), train_data['target']
 train_dmatrix = xgb.DMatrix(data=X, label=y)
 
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
