@@ -26,7 +26,19 @@ train_dmatrix = xgb.DMatrix(data=X, label=y)
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
-model = xgb.XGBClassifier(bojective='binary:logistic', colsample_bytree=0.3, learning_rate=0.1, max_depth=5, alpha=10, n_estimators=100)
+params = {
+    'n_estimators': 100,
+    'learning_rate': 0.1,
+    'colsample_bytree': 0.3,
+    'objective': 'binary:logistic',
+    'max_depth': 5,
+    'alpha': 10,
+
+    'tree_method': ['gpu_hist'],
+    'predictor': ['gpu_predictor'],
+}
+
+model = xgb.XGBClassifier(**params)
 model.fit(X_train, y_train)
 
 preds = model.predict(X_val)
