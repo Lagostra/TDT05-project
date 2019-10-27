@@ -2,4 +2,5 @@
 .ipynb_checkpoints
 data/
 __pycache__
-*.csv
+train*.csv
+test*.csv
